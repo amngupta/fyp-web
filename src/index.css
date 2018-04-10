@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+.navbar-dark {
+  background-color: #222222 !important; 
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.nav {
+  padding-top:50px;
+}
+
+.fade:not(.show) {
+  opacity: 1 !important; 
+}
+
+.modal-backdrop {
+  background-color: #222222cc;
+}
+
+.modal-dialog{
+  margin-top: 200px;
+}
