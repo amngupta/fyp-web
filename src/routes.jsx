@@ -39,10 +39,9 @@ export default class Routes extends Component {
                 <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
                     <div className="container">
                         <NavHashLink smooth  to="/#homeHead" className="navbar-brand js-scroll-trigger">FYP17010</NavHashLink>
-                        <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        Menu
-                        <i className="fa fa-bars"></i>
-                        </button>
+                        <NavHashLink smooth to="/containers" className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navbarResponsive" aria-expanded="false">
+                            View Models
+                        </NavHashLink>
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">

@@ -35,7 +35,7 @@ export default class ModelList extends Component {
         {
             this.setState({
                 modelList: [{
-                    name: 'oo1.obj',
+                    name: '310B_Blob.obj',
                     metadata: {}
                 }]
             })
@@ -44,7 +44,7 @@ export default class ModelList extends Component {
         {
             this.setState({
                 modelList: [{
-                    name: 'rr1.obj',
+                    name: 'DotNet.obj',
                     metadata: {}
                 }]
             })
