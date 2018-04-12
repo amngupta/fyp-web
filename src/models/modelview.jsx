@@ -17,10 +17,12 @@ export default class ModelView extends Component {
         show: false,
         runAllFunctions: false,
         count: 3,
+        advancingFront: false,
+        poissionReconstruction: false,
+        ransacPointSet: false
       };
       this.submitForm = this.submitForm.bind(this);
       this.renderOptions = this.renderOptions.bind(this);
-      // this.renderAlgorithmsDropDowns = this.renderAlgorithmsDropDowns.bind(this)
     }
   
     handleClose() {
@@ -39,38 +41,49 @@ export default class ModelView extends Component {
     submitForm(e)
     {
       e.preventDefault();
-      const {outputfile, runAllFunctions, algo1, algo2, algo3} = this.state;
+      var {outputfile, runAllFunctions} = this.state;
       var commandQuery = {};
       commandQuery.functions = []
-      if (outputfile)
+
+      commandQuery.inputFile = this.props.model.name;
+      commandQuery.inputContainer = this.props.container;
+      if (!outputfile)
       {
-        commandQuery.inputFile = this.props.model.name;
-        commandQuery.inputContainer = this.props.container;
-        if (!outputfile.endsWith(".obj"))
-        {
-          commandQuery.outputFile = outputfile+".obj";
-        }
-        else{
-          commandQuery.outputFile = outputfile;
-        }
-        commandQuery.runAllFunctions = runAllFunctions;
-        if (!runAllFunctions)
-        {
-          if (algo1 !== "null")
-          {
-            commandQuery.functions.push(algo1);
-          }        
-          if (algo2 !== undefined || algo2 !== "null")
-          {
-            commandQuery.functions.push(algo2);
-          }        
-          if (algo3 !== undefined || algo3 !== "null")
-          {
-            commandQuery.functions.push(algo3);
-          }
-        }
-        console.log(commandQuery);
+        outputfile = this.props.model.name;
       }
+      if (!outputfile.endsWith(".obj"))
+      {
+        commandQuery.outputFile = outputfile+".obj";
+      }
+      else{
+        commandQuery.outputFile = outputfile;
+      }
+      if (this.state.runAllFunctions || this.state.advancingFront)
+      {
+        var afParams = {};
+        afParams.function = "af";
+        afParams.probability = parseFloat(this.state.afProbability) ? parseFloat(this.state.afProbability) : 0.05 ;
+        afParams.clusterEpsilon = parseFloat(this.state.afClusterEpsilon) ? parseFloat(this.state.afClusterEpsilon) : 0.05 ;
+        afParams.normalThreshold = parseFloat(this.state.afNormalThreshold) ?  parseFloat(this.state.afNormalThreshold) : 0.8;
+        afParams.epsilon = parseFloat(this.state.afEpsilon) ? parseFloat(this.state.afEpsilon) : 0.005 ;
+        afParams.minimumPoints = parseFloat(this.state.afMinimumPoints) ? parseFloat(this.state.afMinimumPoints) : 100 ;
+        commandQuery.functions.push(afParams);
+      }
+      
+      if (this.state.runAllFunctions || this.state.poissionReconstruction)
+      {
+        var params = {};
+        params.function = "ps";
+        commandQuery.functions.push(params);
+      }
+      
+      if (this.state.runAllFunctions || this.state.ransacPointSet)
+      {
+        var params = {};
+        params.function = "rps";
+        commandQuery.functions.push(params);
+      }
+      console.log(commandQuery);
      
     }
 
@@ -81,41 +94,7 @@ export default class ModelView extends Component {
           {obj.label} 
         </option>
       )
-
     }
-
-    renderAlgorithmsDropDowns()
-    {
-        const {count, runAllFunctions} = this.state;
-        var selects= [];
-        for (var i = 1; i <= count; i++) {
-            var temp = {
-              controlId: "formControlsSelect"+i,
-              controlLabel: "Algorithm " + i,
-              onchangeVar: "algo"+i
-            }
-            selects.push(temp);
-        }
-        console.log(selects);
-
-        return
-        <div>{
-          selects.map((a,i)=> {
-              return(
-                  <FormGroup controlId={a.controlId} key={i}>
-                  <ControlLabel>{a.controlLabel}</ControlLabel>
-                    <FormControl componentClass="select" placeholder="select">
-                      <option value="null"></option>
-                      <option value="af">Advancing Front</option>
-                      <option value="ps">Poission Surface Reconstruction</option>
-                      <option value="ps">RANSAC Pointset Shape Detection </option>
-                  </FormControl>
-                </FormGroup>
-              )
-            })
-          }
-          </div>
-      }
 
     render() {
       const tooltip = (
@@ -173,8 +152,8 @@ export default class ModelView extends Component {
                   <ControlLabel>
                     Output Filename:
                   </ControlLabel>
-                    <FormControl type="text" required={true} placeholder="Filename.obj" onChange={(e) => {
-                        this.setState({ outputfile: e.target.value })} } />
+                    <FormControl type="text" defaultValue={this.props.model.name} required={true} placeholder="Filename.obj" onChange={(e) => {
+                         this.setState({ outputfile: e.target.value })} } />
                   </FormGroup>
                 </OverlayTrigger>
                 <FormGroup>
@@ -185,8 +164,67 @@ export default class ModelView extends Component {
                       
 
                 {/* {this.renderAlgorithmsDropDowns()} */}
-                    
-                <FormGroup controlId="formControlsSelect1">
+                <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
+                      this.setState({advancingFront: !this.state.advancingFront})
+                    }}>Advancing Front</Checkbox>  
+
+
+                    {
+                      (this.state.advancingFront || this.state.runAllFunctions) && 
+                      <div>
+                        <FormGroup>
+                        <ControlLabel>
+                          Probability:
+                        </ControlLabel>
+                          <FormControl type="number" required={true} 
+                          placeholder="Probability" defaultValue={0.05} onChange={(e) => {
+                              this.setState({ afProbability: e.target.value })} } />
+                        </FormGroup>
+                        <FormGroup>
+                        <ControlLabel>
+                          Minimum Points:
+                        </ControlLabel>
+                          <FormControl type="number" required={true} 
+                          placeholder="Minimum Points" defaultValue={100} onChange={(e) => {
+                              this.setState({ afMinimumPoints: e.target.value })} } />
+                        </FormGroup>
+                        <FormGroup>
+                        <ControlLabel>
+                        Epsilon :
+                        </ControlLabel>
+                          <FormControl type="number" required={true} 
+                          placeholder="Epsilon" defaultValue={0.005} onChange={(e) => {
+                              this.setState({ afEpsilon: e.target.value })} } />
+                        </FormGroup>
+                        <FormGroup>
+                        <ControlLabel>
+                          Cluster Epsilon:
+                        </ControlLabel>
+                          <FormControl type="number" required={true} 
+                          placeholder="Cluster Epsilon" defaultValue={0.05} onChange={(e) => {
+                              this.setState({ afClusterEpsilon: e.target.value })} } />
+                        </FormGroup>
+                        <FormGroup>
+                        <ControlLabel>
+                          Normal Threshold:
+                        </ControlLabel>
+                          <FormControl type="number" required={true} 
+                          placeholder="Normal Threshold" defaultValue={0.8} onChange={(e) => {
+                              this.setState({ afNormalThreshold: e.target.value })} } />
+                        </FormGroup>
+                      </div>
+                    }
+
+
+                  <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
+                    this.setState({poissionReconstruction: !this.state.poissionReconstruction})
+                  }}>Poission Surface Reconstruction</Checkbox>  
+
+                  <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
+                    this.setState({ransacPointSet: !this.state.ransacPointSet})
+                  }}>RANSAC Pointset Shape Detection</Checkbox>  
+
+                {/* <FormGroup controlId="formControlsSelect1">
                   <ControlLabel>Alogrithm 1:</ControlLabel>
                   <FormControl componentClass="select" disabled={this.state.runAllFunctions} 
                     placeholder="select" onChange={(e)=> this.setState({algo1: e.target.value})}>
@@ -211,12 +249,11 @@ export default class ModelView extends Component {
                     <option value="null"></option>
                     {algorithms.map((a,i)=>this.renderOptions(a,i))}
                 </FormControl>
-                </FormGroup>
+                </FormGroup> */}
 
                 <FormGroup>
-                  <Col smOffset={2} sm={10}>
-                    <Button type="submit" onClick={this.submitForm}>Submit</Button>
-                  </Col>
+                    <Button disabled={!this.state.runAllFunctions && !this.state.ransacPointSet && !this.state.poissionReconstruction && !this.state.advancingFront}
+                    type="submit" onClick={this.submitForm}>Submit</Button>
                 </FormGroup>
               </Form>
               </Col>
