@@ -116,6 +116,8 @@ export default class ModelView extends Component {
           value: "rps"
         }
       ]
+      const downloadLink = `https://hkufyp17010.blob.core.windows.net/${this.props.container}/${this.props.model.name}`;
+
       return (
         <div className="col-md-4 col-sm-6 portfolio-item">
           <div>
@@ -128,7 +130,10 @@ export default class ModelView extends Component {
                 <img className="img-fluid" src="../img/header-bg2.jpg" alt="" />
                 </a>
                 <div className="portfolio-caption">
-                <h4>{this.props.model.name}</h4>
+                <h4>
+                  {this.props.model.name} &nbsp;
+                  <a download={this.props.model.name} href={downloadLink}><i className="fa fa-download" ></i></a>
+                </h4>
                 </div>
             </div>
           <Modal show={this.state.show} onHide={this.handleClose}         
@@ -138,31 +143,22 @@ export default class ModelView extends Component {
               <Modal.Title>{this.props.model.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-             <Row>
-              <Col md={6}>
-                <h2>Existing Mesh Info/Model</h2>
-                {/* <form method="get" action="file.doc"> */}
-                  <Button className="align-left btn btn-primary" download={this.props.model.name} href={"https://hkufyp17010.blob.core.windows.net/"+this.props.container+"/"+this.props.model.name}>Download </Button>
-                {/* </form> */}
-              </Col>
-              <Col md={6}>
               <Form>
-                <OverlayTrigger placement="right" overlay={tooltip}>
-                <FormGroup controlId="formOBJFilename">
-                  <ControlLabel>
-                    Output Filename:
-                  </ControlLabel>
-                    <FormControl type="text" defaultValue={this.props.model.name} required={true} placeholder="Filename.obj" onChange={(e) => {
-                         this.setState({ outputfile: e.target.value })} } />
-                  </FormGroup>
-                </OverlayTrigger>
-                <FormGroup>
-                    <Checkbox onChange={(e)=> {
-                      this.setState({runAllFunctions: !this.state.runAllFunctions})
-                    }}>Run All Algorithms</Checkbox>
-                </FormGroup>
-                      
+              <Row>
 
+              <Col md={6}>
+                <Col md={12}>
+                    <OverlayTrigger placement="right" overlay={tooltip}>
+                    <FormGroup controlId="formOBJFilename">
+                      <ControlLabel>
+                        Output Filename:
+                      </ControlLabel>
+                        <FormControl type="text" defaultValue={this.props.model.name} required={true} placeholder="Filename.obj" onChange={(e) => {
+                            this.setState({ outputfile: e.target.value })} } />
+                      </FormGroup>
+                    </OverlayTrigger>
+                </Col>
+                <Col md={12}>
                 {/* {this.renderAlgorithmsDropDowns()} */}
                 <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
                       this.setState({advancingFront: !this.state.advancingFront})
@@ -215,15 +211,31 @@ export default class ModelView extends Component {
                       </div>
                     }
 
+                </Col>
+              </Col>
 
+              <Col md={6}>
+                <Col md={12}>
+
+                  <FormGroup>
+                      <Checkbox onChange={(e)=> {
+                        this.setState({runAllFunctions: !this.state.runAllFunctions})
+                      }}>Run All Algorithms</Checkbox>
+                  </FormGroup>
+                </Col>
+                
+
+                <Col md={12}>
                   <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
                     this.setState({poissionReconstruction: !this.state.poissionReconstruction})
                   }}>Poission Surface Reconstruction</Checkbox>  
+                </Col> 
 
+                <Col md={12}>
                   <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
                     this.setState({ransacPointSet: !this.state.ransacPointSet})
                   }}>RANSAC Pointset Shape Detection</Checkbox>  
-
+                </Col>
                 {/* <FormGroup controlId="formControlsSelect1">
                   <ControlLabel>Alogrithm 1:</ControlLabel>
                   <FormControl componentClass="select" disabled={this.state.runAllFunctions} 
@@ -250,14 +262,14 @@ export default class ModelView extends Component {
                     {algorithms.map((a,i)=>this.renderOptions(a,i))}
                 </FormControl>
                 </FormGroup> */}
+                </Col>
+              </Row>
 
                 <FormGroup>
                     <Button disabled={!this.state.runAllFunctions && !this.state.ransacPointSet && !this.state.poissionReconstruction && !this.state.advancingFront}
                     type="submit" onClick={this.submitForm}>Submit</Button>
                 </FormGroup>
               </Form>
-              </Col>
-              </Row>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={this.handleClose}>Close</Button>
