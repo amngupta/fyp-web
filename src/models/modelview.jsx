@@ -127,7 +127,7 @@ export default class ModelView extends Component {
                     <i className="fa fa-plus fa-3x"></i>
                     </div>
                 </div>
-                <img className="img-fluid" src="../img/header-bg2.jpg" alt="" />
+                <img className="img-fluid" src="../img/mesh_img.png" alt="" />
                 </a>
                 <div className="portfolio-caption">
                 <h4>
@@ -158,6 +158,18 @@ export default class ModelView extends Component {
                       </FormGroup>
                     </OverlayTrigger>
                 </Col>
+                <Col md={12}>
+                  <FormGroup>
+                      <Checkbox onChange={(e)=> {
+                        this.setState({runAllFunctions: !this.state.runAllFunctions})
+                      }}>Run All Algorithms</Checkbox>
+                  </FormGroup>
+                  </Col>
+              </Col>
+
+              <Col md={6}>
+
+                
                 <Col md={12}>
                 {/* {this.renderAlgorithmsDropDowns()} */}
                 <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
@@ -212,19 +224,6 @@ export default class ModelView extends Component {
                     }
 
                 </Col>
-              </Col>
-
-              <Col md={6}>
-                <Col md={12}>
-
-                  <FormGroup>
-                      <Checkbox onChange={(e)=> {
-                        this.setState({runAllFunctions: !this.state.runAllFunctions})
-                      }}>Run All Algorithms</Checkbox>
-                  </FormGroup>
-                </Col>
-                
-
                 <Col md={12}>
                   <Checkbox disabled={this.state.runAllFunctions} onChange={(e)=> {
                     this.setState({poissionReconstruction: !this.state.poissionReconstruction})
