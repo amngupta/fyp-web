@@ -39,9 +39,9 @@ export default class Routes extends Component {
                 <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
                     <div className="container">
                         <NavHashLink smooth  to="/#homeHead" className="navbar-brand js-scroll-trigger">FYP17010</NavHashLink>
-                        <NavHashLink smooth to="/containers" className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navbarResponsive" aria-expanded="false">
+                        {/* <NavHashLink smooth to="/containers" className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navbarResponsive" aria-expanded="false">
                             View Models
-                        </NavHashLink>
+                        </NavHashLink> */}
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
@@ -59,16 +59,16 @@ export default class Routes extends Component {
                             <li className="nav-item">
                             <HashLink smooth className="nav-link js-scroll-trigger" to="/#contact">Documentation</HashLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavHashLink smooth to="/containers" className="nav-link js-scroll-trigger">View Models</NavHashLink>
-                            </li>
+                            </li> */}
                         </ul>
                         </div>
                     </div>
                     </nav>
-                <Route exact path="/" component={Home} />
+                <Route exact path="*" component={Home} />
                 {/* {/* <Route path="/blobs/:container" component={BlobList}/> */}
-                <Route path="/containers" component={Containers}/>
+                {/* <Route path="/containers" component={Containers}/> */}
                 <Footer />
 
                 </div>

@@ -40,21 +40,21 @@ export default class Team extends Component {
             {
                 name: "Dirk Schneiders", 
                 title: "Project Superviser",
-                image: "../img/team/1.jpg",
+                image: "img/team/1.jpg",
                 facebook:"https://www.facebook.com/scdirk",
                 linkedin: "https://www.linkedin.com/in/scdirk"
             },
             {
                 name: "Aman Gupta",
                 title: "Team Member",
-                image: "../img/team/awesomeA.jpg",
+                image: "img/team/awesomeA.jpg",
                 facebook: "https://www.facebook.com/amngupta",
                 linkedin: "https://www.linkedin.com/in/amngupta"
             },
             {
                 name: "Waleed Zafar",
                 title: "Team Member",
-                image: "../img/team/bigW.jpg",
+                image: "img/team/bigW.jpg",
                 facebook: "https://www.facebook.com/waleedzaf94",
                 linkedin: "https://www.linkedin.com/in/waleed-zafar-7b491765"
             },

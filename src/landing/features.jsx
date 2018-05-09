@@ -58,13 +58,13 @@ export default class Features extends Component {
         const features = [
             {
                 title: "Streamlined UI", 
-                image: "../img/portfolio/01-thumbnail.jpg",
+                image: "img/portfolio/01-thumbnail.jpg",
                 modalText: "A clean and simplistic User Interface that is controlled by voice commands and hand gestures. The friendly UX allows the user to record new environments or view existing holograms easily.",
                 modalId: "portfolio1"
             },
             {
                 title: "Record New Environments", 
-                image: "../img/portfolio/02-thumbnail.jpg",
+                image: "img/portfolio/02-thumbnail.jpg",
                 modalText: "The core feature of the project. We will be using depth-sensing camera and existing APIs of the Microsoft HoloLens&trade; to create 3D mappings of surrounding environments. The HoloLens&trade; provides hardware and software that is already capable of stitching together surface meshes as a user moves around in an indoor environment.",
                 modalId: "portfolio2"
             },
