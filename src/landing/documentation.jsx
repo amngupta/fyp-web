@@ -19,10 +19,7 @@ export default class Documentation extends Component {
     }
 
     render() {
-        const files = [{
-            fileName: "ProjectPlan.pdf",
-            title: "Project Plan"
-        }, 
+        const files = [
         {
             fileName: "Spatial_Reconstruction_using_Microsoft_HoloLens (WZ).pdf",
             title: "Final Report - ZAFAR Waleed"
@@ -30,11 +27,27 @@ export default class Documentation extends Component {
         {
             fileName: "Spatial_Reconstruction_using_Microsoft_HoloLens(AG).pdf",
             title: "Final Report - GUPTA Aman"
-        }
+        },
+        {
+            fileName: "Final Presentation.pdf",
+            title: "Final Presentation Slides"
+        },
+        {
+            fileName: "FYP Poster.jpg",
+            title: "Exhibition Poster"
+        },
+        {
+            fileName: "Spatial_Reconstruction_using_Microsoft_HoloLens(Interim).pdf",
+            title: "Interim Report"
+        },
+        {
+            fileName: "Spatial_Reconstruction_using_Microsoft_HoloLens(Plan).pdf",
+            title: "Project Plan"
+        } 
     ]
     return (
         <section id="contact">
-        <div className="container">
+        <div className="container documentation">
             <div className="row">
             <div className="col-lg-12 text-center">
                 <h2 className="section-heading">Documentation</h2>

@@ -44,10 +44,9 @@ export default class ModalProp extends Component {
           <a className="portfolio-link" data-toggle="modal" onClick={this.handleShow} >
             <div className="portfolio-hover">
                 <div className="portfolio-hover-content">
-                <i className="fa fa-plus fa-3x"></i>
                 </div>
             </div>
-            <img className="img-fluid" src={this.props.buttonImage} alt="" />
+            <img className="img-fluid modal-img" src={this.props.buttonImage} alt="" />
           </a>
           {this.props.buttonData}
           <Modal show={this.state.show} onHide={this.handleClose}         >

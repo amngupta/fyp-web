@@ -75,11 +75,13 @@ export default class Team extends Component {
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
               <p className="large text-muted">
-                  The team will follow the Agile Development Methodology throughout the project. Agile Development allows iterative, incremental development which will help our team to divide the project into phases. 
+                  The team followed the Agile Development Methodology throughout the project. 
                   <br />
-                  The team members have unique expertise and will divide the work accordingly. Mr. Aman Gupta has a strong web-development and app-development background; therefore he will focus on the HoloLens&trade; application UI as well as the development of the web platform. Whereas, Mr. Waleed Zafar will focus on the development of the back-end server and the mesh processing algorithms.
                   <br />
-                  By phasing the development process, the team will adhere to the strict timeline of the Final Year Project as well as have an integrated application ready at the end of each sprint.
+                  The team members have unique expertise and divided the work accordingly. Mr. Aman Gupta has a strong web-development and app-development background; therefore he worked on the HoloLens™ application UI, the development of the web platform, as well as the design of the Azure services. Whereas, Mr. Waleed Zafar focused on the development of the mesh processing algorithms using CGAL library.
+                  <br />
+                  <br />
+                  By phasing the development process, the team was able to adhere to the strict timeline of the Final Year Project as well as have an integrated application ready at the end of each sprint.
               </p>
             </div>
           </div>

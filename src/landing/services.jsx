@@ -35,12 +35,12 @@ export default class Services extends Component {
             },
             {
                 title: "Accurate 3D Models",
-                text: "Improve on the accuracy of models created using scanning techniques. The application will leverage the 4 environment sensing and 1 depth sensing cameraso scan indoor environments to build wire-frames. The wire-frames will be processed to give the user a unique experience of high-precision 3D models.",
+                text: "Improve on the accuracy of models created using scanning techniques. The application will leverage the 4 environment sensing and 1 depth sensing cameras to scan indoor environments and build a mesh. The mesh will be processed to give the user a unique experience of high-precision 3D models.",
                 icon: "fa fa-object-ungroup fa-stack-1x fa-inverse"
             },
             {
-                title: "Dynamic Object Filtering",
-                text: "The solution will filter out dynamic objects to give the user a static real-world map. Features such as moving people and obstructing objects will be sensed and removed by the HoloLens since they are irrelevant details in the use cases of our application.",
+                title: "Model Processing",
+                text: "The solution will identify and recreate planes, fill holes to build water-tight models, and filter out dynamic objects that are irrelevant to a user to produce a static real-world model.",
                 icon: "fa fa-universal-access fa-stack-1x fa-inverse"
             }
         ]
@@ -52,7 +52,7 @@ export default class Services extends Component {
             <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">About the Project</h2>
                 <h3 className="section-subheading text-muted">
-                    The team is planning to leverage the highly accurate depth-sensing cameras of the Microsoft HoloLens&trade; to scan and reconstruct indoor environments. The team is determined to create an application that can perform spatial reconstruction of indoor spaces using the hardware, and create virtual reality ready maps of the spaces.
+                    Advancements in hardware have led to the invention of the Microsoft HoloLens™, a mixed reality system that allows users to perform physical interactions with the digital world in real time. The device combines features of Virtual Reality (VR) with the physical world, creating Augmented Reality (AR). Nowadays, 3D indoor models can be constructed using construction blueprints and plans; however sometimes, the plans are unavailable or might not be a true representation. In such cases, the areas must be surveyed and reconstructed through a time consuming and costly process. This project aims to showcase the ease with which The Microsoft Hololens™ can be used to perform spatial reconstruction of indoor environments and to visualize them as holograms. The reconstructed, processed holograms will be complemented with interactive features.             
                 </h3>
             </div>
             </div>

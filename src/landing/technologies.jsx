@@ -12,7 +12,7 @@ export default class Technologies extends Component {
        return (
         <div className="col-md-4 col-sm-6" key={key}>
             <a href={tech.link} >
-                <img className="img-fluid d-block mx-auto img-banner" src={tech.logo} alt="" />
+                <img className="img-fluid d-block mx-auto img-banner logo" src={tech.logo} alt="" />
             </a>
         </div>
         )
@@ -31,9 +31,25 @@ export default class Technologies extends Component {
                 link: "",
                 logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Official_unity_logo.png"
             },
+            // {
+            //     link: "",
+            //     logo: "http://i.cs.hku.hk/~xghan/images/CSHKU_logo.png"
+            // },
             {
-                link: "",
-                logo: "http://i.cs.hku.hk/~xghan/images/CSHKU_logo.png"
+                link: "https://www.cgal.org",
+                logo: "https://www.cgal.org/images/cgal_front_page_2013.png"
+            },
+            {
+                link: "https://github.com/Microsoft/MixedRealityToolkit-Unity",
+                logo: "img/logos/MRTK_Logo_Rev.png"
+            },
+            {
+                link: "https://azure.microsoft.com/en-gb/overview/what-is-azure/",
+                logo: "http://gluonhq.com/wp-content/uploads/2018/03/azure.png"
+            },
+            {
+                link:"",
+                logo: "https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png"
             }
         ]
 

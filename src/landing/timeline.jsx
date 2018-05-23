@@ -26,10 +26,11 @@ export default class Timeline extends Component {
                     </div>
                     <div className="timeline-body">
                       <p className="text-muted">
-                        Delivery of our detailed project plan. Construction of the project website.
+                        Delivery of our detailed project plan. Construction of the project website. 
                       </p>
                     </div>
                   </div>
+
                 </li>
                 <li className="timeline-inverted">
                   <div className="timeline-image">
@@ -37,12 +38,15 @@ export default class Timeline extends Component {
                   </div>
                   <div className="timeline-panel">
                     <div className="timeline-heading">
-                      <h4>January 21<sup>st</sup></h4>
+                      <h4>January 2018<sup>st</sup></h4>
                       <h4 className="subheading">Phase 2</h4>
                     </div>
                     <div className="timeline-body">
                       <p className="text-muted">
-                        Prelimary implentation: Application can scan and recognise walls, create maps that can be visualised on a development machine. Delivery of detailed interim report.
+                        Prelimary implentation: Application can scan and store the scanned mesh, create maps that can be visualised on a development machine. Delivery of detailed interim report.
+                      </p>
+                      <p>
+
                       </p>
                     </div>
                   </div>
@@ -58,7 +62,7 @@ export default class Timeline extends Component {
                     </div>
                     <div className="timeline-body">
                       <p className="text-muted">
-                        Finalised implentation: Complete HoloLens&trade; application along with web portal. All tests are complete. Delivery of detailed final report.
+                        Finalised implentation: Complete HoloLens™ application, processing server, and web portal. Delivery of detailed final reports, preparation for final presentation and exhibition.
                       </p>
                     </div>
                   </div>

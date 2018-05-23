@@ -59,6 +59,9 @@ export default class Routes extends Component {
                             <li className="nav-item">
                             <HashLink smooth className="nav-link js-scroll-trigger" to="/#contact">Documentation</HashLink>
                             </li>
+                            <li className="nav-item">
+                            <HashLink smooth className="nav-link js-scroll-trigger" to="/#models">Models</HashLink>
+                            </li>
                             {/* <li className="nav-item">
                                 <NavHashLink smooth to="/containers" className="nav-link js-scroll-trigger">View Models</NavHashLink>
                             </li> */}

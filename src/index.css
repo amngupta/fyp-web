@@ -23,6 +23,27 @@ body {
   background-color: #222222cc;
 }
 
+.documentation{
+  background-color: #222222cc;
+  padding: 1em;
+}
+
 .modal-dialog{
   margin-top: 200px;
+}
+#portfolio .portfolio-item .portfolio-link
+{
+  background: white;
+}
+.logo {
+  max-height: 10em;
+  padding-top: 0.5em;
+}
+
+.modal-img{
+  max-height: 9.5em;
+}
+
+.portfolio-item{
+  text-align: center;
 }
